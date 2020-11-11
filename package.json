@@ -1,0 +1,19 @@
+{
+  "name": "ajaxcourse",
+  "version": "1.0.0",
+  "description": "learn AJAX",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sweet198/AjaxCourse.git"
+  },
+  "author": "Vladislav Svitkovskiy <svitkovskiy198@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sweet198/AjaxCourse/issues"
+  },
+  "homepage": "https://github.com/sweet198/AjaxCourse#readme"
+}
