@@ -150,7 +150,7 @@ window.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => req(e), {'once': true});*/
 
     //POST отправка FormData, fetch
-    const form = document.querySelector('form');
+    /*const form = document.querySelector('form');
 
     function req(e) {
         e.preventDefault();
@@ -182,5 +182,23 @@ window.addEventListener('DOMContentLoaded', () => {
             throw new Error(`Could not fetch ${url}, status: ${res.status}`);
         }
         return await res.json();
+    }*/
+
+    //POST AXIOS
+    const form = document.querySelector('form');
+
+    function req(e) {
+        e.preventDefault();
+
+        let formData = new FormData(form);
+        formData.append("id", Math.random());
+
+        let obj = {};
+        formData.forEach((value, key) => {
+            obj[key] = value;
+        });
+
+        axios.post('http://localhost:3000/people', obj)
     }
+    form.addEventListener('submit', (e) => req(e), {'once': true});
 })
