@@ -84,7 +84,8 @@ window.addEventListener('DOMContentLoaded', () => {
         })
     }*/
 
-    function req() {
+    // axios
+   /* function req() {
         getResource('http://localhost:3000/people')
             .then(data => createCards(data.data))
             .catch(err => console.error(err));
@@ -124,5 +125,49 @@ window.addEventListener('DOMContentLoaded', () => {
                    `;
             document.querySelector('.app').append(card);
         })
+    }*/
+
+    //POST отправка FormData, XMLHttpRequest
+    /*const form = document.querySelector('form');
+
+    function req(e) {
+        e.preventDefault();
+
+        let formData = new FormData(form);
+        formData.append("id", Math.random());
+
+        let obj = {};
+        formData.forEach((value, key) => {
+            obj[key] = value;
+        });
+        let json = JSON.stringify(obj);
+
+        const request = new XMLHttpRequest();
+        request.open('POST', 'http://localhost:3000/people');
+        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        request.send(json);
     }
-});
+    form.addEventListener('submit', (e) => req(e), {'once': true});*/
+
+    //POST отправка FormData, Axios
+    const form = document.querySelector('form');
+
+    function req(e) {
+        e.preventDefault();
+
+        let formData = new FormData(form);
+        formData.append("id", Math.random());
+
+        let obj = {};
+        formData.forEach((value, key) => {
+            obj[key] = value;
+        });
+        let json = JSON.stringify(obj);
+
+        const request = new XMLHttpRequest();
+        request.open('POST', 'http://localhost:3000/people');
+        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        request.send(json);
+    }
+    form.addEventListener('submit', (e) => req(e), {'once': true});
+})
