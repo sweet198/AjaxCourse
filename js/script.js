@@ -149,7 +149,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     form.addEventListener('submit', (e) => req(e), {'once': true});*/
 
-    //POST отправка FormData, Axios
+    //POST отправка FormData, fetch
     const form = document.querySelector('form');
 
     function req(e) {
@@ -162,12 +162,25 @@ window.addEventListener('DOMContentLoaded', () => {
         formData.forEach((value, key) => {
             obj[key] = value;
         });
-        let json = JSON.stringify(obj);
 
-        const request = new XMLHttpRequest();
-        request.open('POST', 'http://localhost:3000/people');
-        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-        request.send(json);
+        getResource('http://localhost:3000/people', obj)
+            .catch(err => console.error(err));
     }
+
     form.addEventListener('submit', (e) => req(e), {'once': true});
+
+    async function getResource(url, data) {
+        const res = await fetch(`${url}`, {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (!res.ok) {
+            throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+        }
+        return await res.json();
+    }
 })
