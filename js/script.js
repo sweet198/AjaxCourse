@@ -185,7 +185,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }*/
 
     //POST AXIOS
-    const form = document.querySelector('form');
+    /*const form = document.querySelector('form');
 
     function req(e) {
         e.preventDefault();
@@ -201,4 +201,51 @@ window.addEventListener('DOMContentLoaded', () => {
         axios.post('http://localhost:3000/people', obj)
     }
     form.addEventListener('submit', (e) => req(e), {'once': true});
+    */
+
+    //POST not JSON XMLHttpRequest
+
+    /*const form = document.querySelector('form');
+
+    function req(e) {
+        e.preventDefault();
+
+        let formData = new FormData(form);
+
+        const request = new XMLHttpRequest();
+        request.open('POST', './api.php');
+        request.send(formData);
+        request.addEventListener('load', function () {
+            console.log(request.response);
+        })
+    }
+
+    form.addEventListener('submit', (e) => req(e), {'once': true});*/
+
+    //POST not JSON Fetch
+   /* const form = document.querySelector('form');
+
+    function req(e) {
+        e.preventDefault();
+
+        let formData = new FormData(form);
+
+        getResource('./api.php', formData)
+            .then(data => console.log(data))
+            .catch(err => console.error(err));
+    }
+
+    async function getResource(url, data) {
+        const res = await fetch(`${url}`, {
+            method: "POST",
+            body: data
+        });
+
+        if (!res.ok) {
+            throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+        }
+        return await res.text();
+    }
+
+    form.addEventListener('submit', (e) => req(e), {'once': true});*/
 })
