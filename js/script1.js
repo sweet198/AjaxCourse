@@ -5,9 +5,14 @@ function req(e) {
 
     let formData = new FormData(form);
 
-    getResource('./api.php', formData)
-        .then(data => console.log(data))
-        .catch(err => console.error(err));
+    axios({
+        method: 'post',
+        url: './api.php',
+        data: formData,
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    }).then(data => console.log(data.data));
 }
 
 async function getResource(url, data) {
